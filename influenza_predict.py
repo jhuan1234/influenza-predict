@@ -4,7 +4,6 @@ import numpy as np
 import pandas as pd
 import shap
 import matplotlib.pyplot as plt
-from sklearn.preprocessing import StandardScaler
 
 # Load the model
 model = joblib.load('rf_model.pkl')
@@ -42,9 +41,7 @@ bcell = st.number_input("B-cell%:", min_value=0.0, max_value=100.0, value=20.0)
 cd4 = st.number_input("CD4+T cell count:", min_value=0.0, max_value=50000.0, value=1000.0)
 
 # Process inputs and make predictions
-feature_values_a = [neut, pct, ast, glucose, bun, c3, bcell, cd4]
-scaler = StandardScaler()
-feature_values= scaler.fit_transform(feature_values_a)
+feature_values = [neut, pct, ast, glucose, bun, c3, bcell, cd4]
 features = np.array([feature_values])
 
 if st.button("Predict"):
