@@ -4,7 +4,6 @@ import numpy as np
 import pandas as pd
 import shap
 import matplotlib.pyplot as plt
-from sklearn.preprocessing import StandardScaler
 
 # Load the model
 model = joblib.load('rf_model.pkl')
@@ -44,11 +43,6 @@ cd4 = st.number_input("CD4+T cell count:", min_value=0.0, max_value=50000.0, val
 # Process inputs and make predictions
 feature_values = [neut, pct, ast, glucose, bun, c3, bcell, cd4]
 features = np.array([feature_values])
-# 数据标准化
-data=pd.DataFrame([feature_values], columns=feature_names)
-scaler = StandardScaler()
-data_scaler=scaler.fit_transform(data)
-features_scaler = scaler.fit_transform(features)
 
 if st.button("Predict"):
     # Predict class and probabilities
@@ -80,9 +74,8 @@ if st.button("Predict"):
     st.write(advice)
 
    # Calculate SHAP values and display force plot   
-    
     explainer = shap.TreeExplainer(model)   
-    shap_values = explainer.shap_values(data_scaler)
+    shap_values = explainer.shap_values(features)
     print(shap_values,features.shape)
     shap.force_plot(explainer.expected_value[1], shap_values[1],features,feature_names=feature_names,show=False,matplotlib=True)
     plt.savefig("shap_force_plot.png", bbox_inches='tight', dpi=1200)
