@@ -46,7 +46,7 @@ feature_values = [neut, pct, ast, glucose, bun, c3, bcell, cd4]
 features = np.array([feature_values])
 # 数据标准化
 scaler = StandardScaler()
-features_scaler=scaler.fit_transform(features)
+features_scaler=scaler.fit_transform(feature_values)
 
 if st.button("Predict"):
     # Predict class and probabilities
