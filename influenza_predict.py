@@ -43,12 +43,12 @@ cd4 = st.number_input("CD4+T cell count:", min_value=0.0, max_value=50000.0, val
 # Process inputs and make predictions
 feature_values = [neut, pct, ast, glucose, bun, c3, bcell, cd4]
 features = np.array([feature_values])
-
+features_scale=pd.DataFrame(scale.transform(features),columns=feature_names)
 if st.button("Predict"):
     # Predict class and probabilities
-    predicted_class = model.predict(features)[0]
-    predicted_proba = model.predict_proba(features)[0] 
-    predicted_proba_s=model.predict_proba(features)[0,1]
+    predicted_class = model.predict(features_scale)[0]
+    predicted_proba = model.predict_proba(features_scale)[0] 
+    predicted_proba_s=model.predict_proba(features_scale)[0,1]
     # Display prediction results
     #st.write(f"**Predicted Class:** {predicted_class}")
     st.write(f"**Prediction Probabilities:** {predicted_proba_s}")
@@ -75,7 +75,6 @@ if st.button("Predict"):
 
    # Calculate SHAP values and display force plot   
     explainer = shap.TreeExplainer(model)   
-    features_scale=pd.DataFrame(scale.transform(features),columns=feature_names)
     shap_values = explainer.shap_values(features_scale)
     print(shap_values,features.shape)
     shap.force_plot(explainer.expected_value[1], shap_values[1],features,feature_names=feature_names,show=False,matplotlib=True)
