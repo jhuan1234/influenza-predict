@@ -51,8 +51,7 @@ if st.button("Predict"):
     predicted_proba_s=model.predict_proba(features_scale)[0,1]
     # Display prediction results
     #st.write(f"**Predicted Class:** {predicted_class}")
-    probability_s = predicted_proba_s[predicted_class] * 100
-    st.write(f"**Predicted Probability of Severe influenza :** {probability_s:.1f}%")
+    st.write(f"**Predicted Probability of Severe influenza :** {predicted_proba_s:.1f}%")
 
     # Generate advice based on prediction results
     probability = predicted_proba[predicted_class] * 100
