@@ -45,10 +45,10 @@ cd4 = st.number_input("CD4+T cell count:", min_value=0.0, max_value=50000.0, val
 feature_values = [neut, pct, ast, glucose, bun, c3, bcell, cd4]
 features = np.array([feature_values])
 # 数据标准化
-    data=pd.DataFrame([feature_values], columns=feature_names)
-    scaler = StandardScaler()
-    data_scaler=scaler.fit_transform(data)
-    features_scaler = scaler.fit_transform(features)
+data=pd.DataFrame([feature_values], columns=feature_names)
+scaler = StandardScaler()
+data_scaler=scaler.fit_transform(data)
+features_scaler = scaler.fit_transform(features)
 
 if st.button("Predict"):
     # Predict class and probabilities
