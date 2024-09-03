@@ -58,7 +58,7 @@ if st.button("Predict"):
     if predicted_class == 1:
         advice = (
             f"According to our model, the child has a high risk of severe influenza. "
-            f"The model predicts that the probability of having severe influenza is {probability:.2f}%. "
+            f"The model predicts that the probability of having severe influenza is {predicted_proba_s:.2f}%. "
             "While this is just an estimate, it suggests that the child may be at significant risk. "
             "I recommend that you consult a pediatrician as soon as possible for further evaluation and "
             "to ensure the child receives an accurate diagnosis and necessary treatment."
@@ -66,7 +66,7 @@ if st.button("Predict"):
     else:
         advice = (
             f"According to our model, the child has a low risk of severe influenza. "
-            f"The model predicts that the probability of not having severe influenza is {probability:.2f}%. "
+            f"The model predicts that the probability of having severe influenza is {predicted_proba_s:.2f}%. "
             "However, maintaining a healthy lifestyle and monitoring the child's health is still very important. "
             "I recommend regular check-ups to monitor the child's health, "
             "and to seek medical advice promptly if any symptoms develop."
