@@ -23,7 +23,7 @@ neut = st.number_input("NEUT%:", min_value=0.0, max_value=100.0, value=50.0)
 pct = st.number_input("PCT:", min_value=0.0, max_value=200.0, value=0.5)
 
 # AST: numerical input
-ast = st.number_input("AST:", min_value=0.0, max_value=10000.0, value=100.0)
+ast = st.number_input("AST:", min_value=0.0, max_value=20000.0, value=100.0)
 
 # Glucose: numerical input
 glucose = st.number_input("Glucose:", min_value=0.0, max_value=100.0, value=5.0)
@@ -50,7 +50,7 @@ if st.button("Predict"):
     predicted_proba = model.predict_proba(features)[0]
 
     # Display prediction results
-    st.write(f"**Predicted Class:** {predicted_class}")
+    #st.write(f"**Predicted Class:** {predicted_class}")
     st.write(f"**Prediction Probabilities:** {predicted_proba}")
 
     # Generate advice based on prediction results
