@@ -47,11 +47,11 @@ features = np.array([feature_values])
 if st.button("Predict"):
     # Predict class and probabilities
     predicted_class = model.predict(features)[0]
-    predicted_proba = model.predict_proba(features)[0, 1] 
-
+    predicted_proba = model.predict_proba(features)[0] 
+    predicted_proba_s=model.predict_proba(features)[0,1]
     # Display prediction results
     #st.write(f"**Predicted Class:** {predicted_class}")
-    st.write(f"**Prediction Probabilities:** {predicted_proba}")
+    st.write(f"**Prediction Probabilities:** {predicted_proba_s}")
 
     # Generate advice based on prediction results
     probability = predicted_proba[predicted_class] * 100
