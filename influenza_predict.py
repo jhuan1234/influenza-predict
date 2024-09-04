@@ -54,8 +54,8 @@ if st.button("Predict"):
     st.write(f"**Predicted Probability of Severe influenza :** {predicted_proba_s:.2f}%")
 
     # Generate advice based on prediction results
-    #probability = predicted_proba[predicted_class] * 100
-    #if predicted_class == 1:
+    probability = predicted_proba[predicted_class] * 100
+    if predicted_class == 1:
         advice = (
             f"According to our model, the child has a high risk of severe influenza. "
             f"The model predicts that the probability of having severe influenza is {predicted_proba_s:.2f}%. "
@@ -63,7 +63,7 @@ if st.button("Predict"):
             "I recommend that you consult a pediatrician as soon as possible for further evaluation and "
             "to ensure the child receives an accurate diagnosis and necessary treatment."
         )
-    #else:
+    else:
         advice = (
             f"According to our model, the child has a low risk of severe influenza. "
             f"The model predicts that the probability of having severe influenza is {predicted_proba_s:.2f}%. "
