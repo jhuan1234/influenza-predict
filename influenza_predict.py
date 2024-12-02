@@ -14,7 +14,7 @@ feature_names = [
 ]
 
 # Streamlit user interface
-st.title("Severe Influenza Predictor for Children")
+st.title("Critical influenza predictor for hospitalized children")
 
 # NEUT%: numerical input
 neut = st.number_input("NEUT%:", min_value=0.0, max_value=100.0, value=50.0)
@@ -51,7 +51,7 @@ if st.button("Predict"):
     predicted_proba_s=model.predict_proba(features_scale)[0,1]
     # Display prediction results
     #st.write(f"**Predicted Class:** {predicted_class}")
-    st.write(f"**Predicted Probability of Severe influenza :** {predicted_proba_s*100:.2f}%")
+    st.write(f"**Predicted Probability of critical influenza :** {predicted_proba_s*100:.2f}%")
 
     # Generate advice based on prediction results
     probability = predicted_proba[predicted_class] * 100
