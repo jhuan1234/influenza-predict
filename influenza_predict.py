@@ -14,7 +14,7 @@ feature_names = [
 ]
 
 # Streamlit user interface
-st.title("Critical influenza predictor for hospitalized children")
+st.title("Severe influenza predictor for hospitalized children")
 # NEUT%: numerical input
 neut = st.number_input("NEUT%:", min_value=0.0, max_value=100.0, value=50.0)\
 
